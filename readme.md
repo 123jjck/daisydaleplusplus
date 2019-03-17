@@ -16,13 +16,21 @@
 # Установка
 
 1. Первым делом необходимо перенести папку daisy из репозитория в папку applications в корне Adobe Media Server.
-2. Открываем папку daisy и редактируем main.asc, меняем переменную msHost, ставим домен для апишки (для локалки достаточно localhost)
-3. Заливаем флешки на вебсервер в папку fs
+2. Заливаем флешки на вебсервер в папку fs
 4. Копируем файлы из всех папок репозитория (кроме папки daisy и файла dump.sql) и вставляем их в корень вашего сайта (для XAMPP это htdocs)
-5. В PhpMyAdmin создайте базу данных и импортируйте туда dump.sql
-6. Запустите Adobe Media Server 5 и Adobe Media Administration Server
-7. Для запуска сервера откройте Administration Console, нажмите ажмите на кнопку new instance слева внизу, выберите пункт daisy и нажмите Enter
-8. Теперь вы можете зайти на localhost и наслаждаться игрой
+7. В PhpMyAdmin создайте базу данных и импортируйте туда dump.sql
+8. Запустите Adobe Media Server 5 и Adobe Media Administration Server
+9. Для запуска сервера откройте Administration Console, нажмите ажмите на кнопку new instance слева внизу, выберите пункт daisy и нажмите Enter
+10. Теперь вы можете зайти на localhost и наслаждаться игрой
+
+# Дополнительные шаги установки для запуска сервера на VDS/VPS
+11. При необходимости редактируем файл ServerAction.php, меняем localhost на IP адрес сервера
+12. Открываем папку daisy и редактируем main.asc, меняем переменную msHost, ставим домен для апишки (также можно указывать IP)
+14. Открывем файл .htaccess и добавляем следующие строки:
+    RewriteCond %{REMOTE_ADDR} !^YO\.UR\.I\.P$
+    RewriteRule ^kek\.php$ - [F,L]
+    RewriteRule ^ban\.php$ - [F,L]
+(где YOUR IP - IP адрес вашего сервера)
 
 # Лицензия
 
