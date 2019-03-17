@@ -4,11 +4,22 @@ session_start();
 
 $db = new mysqli('localhost', 'root', '', 'daisy');
 $db->set_charset("utf8");
+$errlvl = "Ошибка! Длинный уровень. Максимальная длина: 5 символов";
+$errlv2 = "Ошибка! Уровень не должен содержать недопустимые символы";
+$errdate = "Ошибка! Неправильная дата";
 
 if (!isset($_SESSION["userId"]) || !isset($_POST["level"])) {
     exit;    
 }
-
+    if (strlen($_POST["level"]) > 5) {
+        echo $errlvl;
+        } else {
+                if (preg_match("/[^a-z,A-Z,0-9,а-я,А-Я,\_]/u", $_POST["level"])) {
+                echo $errlv2;
+                } else {
+                        if (!checkdate ((int)$_POST["regmonth"],(int)$_POST["regday"],(int)$_POST["regyear"])) {
+                        echo $errdate;
+		                } else {
 $q = $db->query("SELECT * FROM USERS WHERE ID = " . $_SESSION["userId"] . ";");
 $a = $q->fetch_assoc();
 $prevLevel = $a['LEVEL'];
@@ -25,3 +36,7 @@ $db->query("UPDATE USERS SET REGDATE = '" . $regdate . "' WHERE ID = " . $_SESSI
 $res = "ОК, данные обновлены!";
 
 echo $res;
+    }
+        }
+            }
+?>
