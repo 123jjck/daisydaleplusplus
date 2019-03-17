@@ -6,7 +6,4 @@ RewriteRule ^fs/(.*)!.swf$ /fs/$1.swf
 RewriteRule ^async/ServerAction ServerAction.php
 RewriteRule ^async/Ping ping.php
 RewriteRule ^logout logout.php
-RewriteCond %{REMOTE_ADDR} !^YO\.UR\.I\.P$
-RewriteRule ^kek\.php$ - [F,L]
-RewriteRule ^ban\.php$ - [F,L]
 </IfModule>
