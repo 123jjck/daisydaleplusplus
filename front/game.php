@@ -22,7 +22,7 @@
             <div class="centered">
                 <embed type="application/x-shockwave-flash" src="base.swf"
                     style="width: 100%"
-                    flashvars="game_server=http%3A%2F%2Fdaisydale.cc%2F&url_path_server=http%3A%2F%2Fdaisydale.cc%2F&portal_url=http%3A%2F%2Fdaisydale.cc%2F&manual_server_selection=&start_step=0&useHashInName=">
+                    flashvars="game_server=http%3A%2F%2Flocalhost%2F&url_path_server=http%3A%2F%2Flocalhost%2F&portal_url=http%3A%2F%2Flocalhost%2F&manual_server_selection=&start_step=0&useHashInName=">
             </div>
         </div>
 
