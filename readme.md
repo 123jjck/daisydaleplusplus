@@ -5,13 +5,13 @@
 # Требования
 Для создания сервера с Дейзи Дейлом вам нужны
 
-1.Adobe Flash Media Server (желательно версию 5, apache не ставим)
+1. [Adobe Flash Media Server](https://adobe.ly/2GY8WUp) (желательно версию 5, apache не ставим и убираем использовние порта 80)
 
-2.Xampp или другой сервер
+2. [Xampp](https://bit.ly/2TgobyD) или другой сервер
 
-3.Swf база файлов Шарарама (найти не трудно)
+3. Swf база файлов Шарарама 
 
-4.MariaDB или MySQL (для хранения аккаунтов)
+4. [MariaDB](https://mariadb.org/download/) или [MySQL](https://dev.mysql.com/downloads/mysql/) (для хранения аккаунтов) (в случае с [XAMPP](https://bit.ly/2TgobyD) идёт в комплекте)
 
 # Установка
 
