@@ -18,7 +18,7 @@ $db = new mysqli('localhost', 'root', '', 'daisy');
 $db->set_charset("utf8");
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
-  if (false) {
+   if (preg_match("/[^a-z,A-Z,0-9,а-я,А-Я,\_]/u", $_POST["username"])) { 
     $error = "Ваш логин содержит недопустимые символы.";
   } else {
     if (strlen($_POST["username"]) < 3 ) {
