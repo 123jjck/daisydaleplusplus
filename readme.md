@@ -27,9 +27,11 @@
 11. При необходимости редактируем файл ServerAction.php, меняем localhost на IP адрес сервера
 12. Открываем папку daisy и редактируем main.asc, меняем переменную msHost, ставим домен для апишки (также можно указывать IP)
 14. Открывем файл .htaccess и добавляем следующие строки:
-    RewriteCond %{REMOTE_ADDR} !^YO\.UR\.I\.P$
-    RewriteRule ^kek\.php$ - [F,L]
-    RewriteRule ^ban\.php$ - [F,L]
+```
+RewriteCond %{REMOTE_ADDR} !^YO\.UR\.I\.P$
+RewriteRule ^kek\.php$ - [F,L]
+RewriteRule ^ban\.php$ - [F,L]
+```
 (где YOUR IP - IP адрес вашего сервера)
 
 # Лицензия
