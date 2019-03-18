@@ -17,27 +17,34 @@ function generateTicket() {
 $db = new mysqli('localhost', 'root', '', 'daisy');
 $db->set_charset("utf8");
 
-if (isset($_POST["username"]) && isset($_POST["password"])) {
-   if (preg_match("/[^a-z,A-Z,0-9,а-я,А-Я,\_]/u", $_POST["username"])) { 
+$safePost = Array();
+
+foreach($_POST as $key => $value) {
+  $safePost[$key] = $db->escape_string($value);
+}
+
+
+if (isset($safePost["username"]) && isset($safePost["password"])) {
+   if (preg_match("/[^a-z,A-Z,0-9,а-я,А-Я,\_]/u", $safePost["username"])) { 
     $error = "Ваш логин содержит недопустимые символы.";
   } else {
-    if (strlen($_POST["username"]) < 3 ) {
+    if (strlen($safePost["username"]) < 3 ) {
         $error = "Короткий логин";
-    }  else if (strlen($_POST["username"]) > 40) {
+    }  else if (strlen($safePost["username"]) > 40) {
         $error = "Длинный логин";
       } else {
-      if (strlen($_POST["password"]) < 6) {
+      if (strlen($safePost["password"]) < 6) {
         $error = "Короткий пароль";
       } else {
-        $c = $db->query("SELECT * FROM USERS WHERE USERNAME = '" . $_POST["username"] . "';");
+        $c = $db->query("SELECT * FROM USERS WHERE USERNAME = '" . $safePost["username"] . "';");
 
         if ($c->num_rows == 0) {
           $ava = "IsBodyPart>true|BodyPartTypeId>5|MediaResourceID>67|LayerID>25|BodyPartId>30|Id>30|Color>NaN;IsBodyPart>true|BodyPartTypeId>6|MediaResourceID>68|LayerID>39|BodyPartId>31|Id>31|Color>16762375;IsBodyPart>true|BodyPartTypeId>7|MediaResourceID>74|LayerID>29|BodyPartId>40|Id>40|Color>NaN;IsBodyPart>true|BodyPartTypeId>8|MediaResourceID>98|LayerID>49|BodyPartId>73|Id>73|Color>NaN;IsBodyPart>true|BodyPartTypeId>2|MediaResourceID>55|LayerID>9|BodyPartId>1|Id>1|Color>NaN;IsBodyPart>true|BodyPartTypeId>3|MediaResourceID>56|LayerID>19|BodyPartId>2|Id>2|Color>16762375;IsBodyPart>false|GoodID>8712|MediaResourceID>27527|GoodTypeID>4|LayerID>45|Id>8712;IsBodyPart>false|GoodID>9235|MediaResourceID>29235|GoodTypeID>94|LayerID>57|Id>9235";
           $inv = "";
-          $hash = password_hash(md5($_POST["password"]), PASSWORD_DEFAULT);
+          $hash = password_hash(md5($safePost["password"]), PASSWORD_DEFAULT);
           $date = date("Y-m-d") . "T" . date("H-m-s") . ".0";
           $ticket = generateTicket();
-          $qwery = $db->query("INSERT INTO `USERS`(`USERNAME`, `PASSWORD`, `ROLEFLAGS`, `LEVEL`, `AVATAR`, `TICKET`, `INVENTORY`, `REGDATE`) VALUES ('" . $_POST["username"] . "', '" . $hash . "', 131086 ,  999, '" . $ava . "', '" . $ticket . "',  '" . $inv . "', '" . $date . "');");
+          $qwery = $db->query("INSERT INTO `USERS`(`USERNAME`, `PASSWORD`, `ROLEFLAGS`, `LEVEL`, `AVATAR`, `TICKET`, `INVENTORY`, `REGDATE`) VALUES ('" . $safePost["username"] . "', '" . $hash . "', 131086 ,  999, '" . $ava . "', '" . $ticket . "',  '" . $inv . "', '" . $date . "');");
           if (!$qwery) { 
              echo $db->error;
              exit;   
