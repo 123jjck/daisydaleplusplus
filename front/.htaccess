@@ -6,4 +6,5 @@ RewriteRule ^fs/(.*)!.swf$ /fs/$1.swf
 RewriteRule ^async/ServerAction ServerAction.php
 RewriteRule ^async/Ping ping.php
 RewriteRule ^logout logout.php
+Options -Indexes
 </IfModule>
