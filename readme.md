@@ -16,7 +16,7 @@
 
 1. [Adobe Flash Media Server](https://adobe.ly/2GY8WUp) (желательно версию 5, для 32-х битных систем можно попробовать использовать [эту](https://u.to/asXsFA) версию), apache **не ставим** и **убираем использовние порта 80**)
 
-2. [Xampp](https://bit.ly/2TgobyD) или другой сервер
+2. [Xampp](https://bit.ly/2TgobyD) или другой сервер с PHP
 
 3. Swf база файлов Шарарама 
 
