@@ -10,7 +10,7 @@ $db = new mysqli('localhost', 'root', '', 'daisy');
 $db->set_charset("utf8");
 
 
-$q = $db->query("SELECT * FROM USERS WHERE ID = " . $_SESSION["userId"] . ";");
+$q = $db->query("SELECT * FROM users WHERE ID = " . $_SESSION["userId"] . ";");
 $a = $q->fetch_assoc();
 
 $level = $a['LEVEL'];
