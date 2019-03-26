@@ -36,7 +36,7 @@ if (isset($safePost["username"]) && isset($safePost["password"])) {
       if (strlen($safePost["password"]) < 6) {
         $error = "Короткий пароль";
       } else {
-        $c = $db->query("SELECT * FROM USERS WHERE USERNAME = '" . $safePost["username"] . "';");
+        $c = $db->query("SELECT * FROM users WHERE USERNAME = '" . $safePost["username"] . "';");
 
         if ($c->num_rows == 0) {
           $ava = "IsBodyPart>true|BodyPartTypeId>5|MediaResourceID>67|LayerID>25|BodyPartId>30|Id>30|Color>NaN;IsBodyPart>true|BodyPartTypeId>6|MediaResourceID>68|LayerID>39|BodyPartId>31|Id>31|Color>16762375;IsBodyPart>true|BodyPartTypeId>7|MediaResourceID>74|LayerID>29|BodyPartId>40|Id>40|Color>NaN;IsBodyPart>true|BodyPartTypeId>8|MediaResourceID>98|LayerID>49|BodyPartId>73|Id>73|Color>NaN;IsBodyPart>true|BodyPartTypeId>2|MediaResourceID>55|LayerID>9|BodyPartId>1|Id>1|Color>NaN;IsBodyPart>true|BodyPartTypeId>3|MediaResourceID>56|LayerID>19|BodyPartId>2|Id>2|Color>16762375;IsBodyPart>false|GoodID>8712|MediaResourceID>27527|GoodTypeID>4|LayerID>45|Id>8712;IsBodyPart>false|GoodID>9235|MediaResourceID>29235|GoodTypeID>94|LayerID>57|Id>9235";
@@ -44,7 +44,7 @@ if (isset($safePost["username"]) && isset($safePost["password"])) {
           $hash = password_hash(md5($safePost["password"]), PASSWORD_DEFAULT);
           $date = date("Y-m-d") . "T" . date("H-m-s") . ".0";
           $ticket = generateTicket();
-          $qwery = $db->query("INSERT INTO `USERS`(`USERNAME`, `PASSWORD`, `ROLEFLAGS`, `LEVEL`, `AVATAR`, `TICKET`, `INVENTORY`, `REGDATE`) VALUES ('" . $safePost["username"] . "', '" . $hash . "', 131086 ,  999, '" . $ava . "', '" . $ticket . "',  '" . $inv . "', '" . $date . "');");
+          $qwery = $db->query("INSERT INTO `users`(`USERNAME`, `PASSWORD`, `ROLEFLAGS`, `LEVEL`, `AVATAR`, `TICKET`, `INVENTORY`, `REGDATE`) VALUES ('" . $safePost["username"] . "', '" . $hash . "', 131086 ,  999, '" . $ava . "', '" . $ticket . "',  '" . $inv . "', '" . $date . "');");
           if (!$qwery) { 
              echo $db->error;
              exit;   
