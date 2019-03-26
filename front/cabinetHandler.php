@@ -20,7 +20,7 @@ if (!isset($_SESSION["userId"]) || !isset($_POST["level"])) {
                         if (!checkdate ((int)$_POST["regmonth"],(int)$_POST["regday"],(int)$_POST["regyear"])) {
                         echo $errdate;
 		                } else {
-$q = $db->query("SELECT * FROM USERS WHERE ID = " . $_SESSION["userId"] . ";");
+$q = $db->query("SELECT * FROM users WHERE ID = " . $_SESSION["userId"] . ";");
 $a = $q->fetch_assoc();
 $prevLevel = $a['LEVEL'];
 
@@ -30,8 +30,8 @@ $regdate = $_POST["regyear"] . "-" . $_POST["regmonth"] . "-" . $_POST["regday"]
 $level = strval($level);
 
 
-$db->query("UPDATE USERS SET LEVEL = '" . $level . "' WHERE ID = " . $_SESSION["userId"] . ";");
-$db->query("UPDATE USERS SET REGDATE = '" . $regdate . "' WHERE ID = " . $_SESSION["userId"] . ";");
+$db->query("UPDATE users SET LEVEL = '" . $level . "' WHERE ID = " . $_SESSION["userId"] . ";");
+$db->query("UPDATE users SET REGDATE = '" . $regdate . "' WHERE ID = " . $_SESSION["userId"] . ";");
 
 $res = "ОК, данные обновлены!";
 
