@@ -23,7 +23,7 @@ $db = new mysqli('localhost', 'root', '', 'daisy');
 $db->set_charset("utf8");
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
-  $a = $db->query("SELECT ID, PASSWORD, ROLEFLAGS FROM USERS WHERE USERNAME = '" . $_POST['username'] . "';");
+  $a = $db->query("SELECT ID, PASSWORD, ROLEFLAGS FROM users WHERE USERNAME = '" . $_POST['username'] . "';");
   if ($a->num_rows == 0) {
     $error = "Нет такого смешарика";
   } else {
@@ -31,7 +31,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     
     if (password_verify(md5($_POST["password"]), $fetched['PASSWORD'])) {
       $token = generateTicket();
-      $db->query("UPDATE USERS SET TICKET = '" . $token . "' WHERE USERNAME = '" . $_POST["username"] . "';");
+      $db->query("UPDATE users SET TICKET = '" . $token . "' WHERE USERNAME = '" . $_POST["username"] . "';");
       $_SESSION["userId"] = $fetched["ID"];
       $_SESSION["ticket"] = $token;
       $_SESSION["roleflags"] = $fetched["ROLEFLAGS"];
