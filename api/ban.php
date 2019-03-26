@@ -16,4 +16,3 @@ if (isset($_POST["ticket"])) {
 		$q = $db->query("UPDATE users SET ISBANNED = 1 WHERE ID = " . $_POST["id"] . ";");
 	}
 }
-?>
