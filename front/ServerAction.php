@@ -68,7 +68,7 @@ $serversList = '<servers><item Id="1" TRId="1" RId="5" RTMPUrl="rtmp://localhost
 $db = new mysqli('localhost', 'root', '', 'daisy');
 $db->set_charset("utf8");
 
-$q = $db->query("SELECT * FROM USERS WHERE ID = " . $_SESSION["userId"] . ";");
+$q = $db->query("SELECT * FROM users WHERE ID = " . $_SESSION["userId"] . ";");
 
 $a = $q->fetch_assoc();
 
