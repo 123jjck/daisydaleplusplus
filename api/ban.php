@@ -5,7 +5,7 @@ $db = new mysqli('localhost', 'root', '', 'daisy');
 
 
 if (isset($_POST["ticket"])) {
-	$user = $db->query("SELECT * FROM users WHERE TICKET = '" . $_POST["ticket"] . "';");
+	$user = $db->query("SELECT * FROM USERS WHERE TICKET = '" . $_POST["ticket"] . "';");
 
 	if ($user->num_rows <= 0) {
 		exit;
