@@ -2,7 +2,7 @@
 
 $dbh = new PDO("mysql:host=localhost;dbname=daisy;charset=UTF8", 'root', '');
 
-if (strlen($_POST["bg"]) > 5) {
+if (strlen($_POST["bg"]) > 5) { // проверка на дурачка
 exit();
 }
 
