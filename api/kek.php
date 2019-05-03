@@ -7,4 +7,4 @@ $q = $db->query("SELECT * FROM USERS WHERE TICKET = '" . $_GET['ticket'] ."';");
 
 $a = $q->fetch_assoc();
 
-echo "id=" . $a['ID']  . "&username=" . $a['USERNAME']  . "&level=" . $a['LEVEL'] . "&regdate=" . $a['REGDATE'] . "&roleflags=" . $a['ROLEFLAGS'] . "&money=".$a["MONEY"]."&gold=".$a["GOLD"]."&magic=".$a["MAGIC"]."&avatar=" . $a['AVATAR'] . "&inventory=" . $a['INVENTORY'] . "&isbanned=" . $a['ISBANNED'];
+echo "id=" . $a['ID']  . "&username=" . $a['USERNAME']  . "&level=" . $a['LEVEL'] . "&regdate=" . $a['REGDATE'] . "&roleflags=" . $a['ROLEFLAGS'] . "&money=".$a["MONEY"]."&gold=".$a["GOLD"]."&magic=".$a["MAGIC"]."&avatar=" . $a['AVATAR'] . "&inventory=" . $a['INVENTORY'] . "&isbanned=" . $a['ISBANNED'] . "&bg=" . $a['BG'];
