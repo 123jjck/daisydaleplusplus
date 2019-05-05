@@ -1,18 +1,21 @@
 <?php
 
 
-$db = new mysqli('localhost', 'root', '', 'daisy');
+include("/var/www/html/db_connection.php");
+global $dbh;
 
 
 if (isset($_POST["ticket"])) {
-	$user = $db->query("SELECT * FROM USERS WHERE TICKET = '" . $_POST["ticket"] . "';");
-
-	if ($user->num_rows <= 0) {
+	$spkidaly = $dbh->prepare("SELECT * FROM users WHERE TICKET = :ticket");
+	$spkidaly->execute(array('ticket' => $_POST["ticket"]));
+	if (!$spkidaly) {
 		exit;
 	}
-
-	$a = $user->fetch_assoc();
+//$id = ($_POST["id"] - 100000);
+	$id = $_POST["id"];
+	$a = $spkidaly->fetch(PDO::FETCH_ASSOC);
 	if ($a['ROLEFLAGS'] == "393230") {
-		$q = $db->query("UPDATE users SET ISBANNED = 1 WHERE ID = " . $_POST["id"] . ";");
+		$q = $dbh->prepare("UPDATE users SET ISBANNED = 1 WHERE ID = :id");
+		$q->execute(array('id' => $id));
 	}
 }
