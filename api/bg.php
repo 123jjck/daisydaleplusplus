@@ -1,5 +1,6 @@
 <?php
-$dbh = new PDO("mysql:host=localhost;dbname=daisy;charset=UTF8", 'root', '');
+include("/var/www/html/db_connection.php");
+global $dbh;
 $q = $dbh->prepare("UPDATE users SET BG  = :bg WHERE TICKET = :token");
  $q->execute(array('bg' => $_POST['bg'], 'token' => $_POST['ticket']));
 ?>
