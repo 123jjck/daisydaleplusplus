@@ -1,6 +1,7 @@
 <?php
 
+include("/var/www/html/db_connection.php");
+global $dbh;
 
-$db = new mysqli('localhost', 'root', '', 'daisy');
-
-$q = $db->query("UPDATE USERS SET AVATAR  = '" . $_POST['avatar'] . "' WHERE TICKET = '" . $_POST['ticket'] ."';");
+$q = $dbh->prepare("UPDATE users SET AVATAR  = :avatar WHERE TICKET = :token");
+ $q->execute(array('avatar' => $_POST['avatar'], 'token' => $_POST['ticket']));
