@@ -1,5 +1,19 @@
 <?php
 
-$db = new mysqli('localhost', 'root', '', 'daisy');
+include("/var/www/html/db_connection.php");
+global $dbh;
 
-$q = $db->query("UPDATE USERS SET INVENTORY  = '" . $_POST['inventory'] . "' WHERE TICKET = '" . $_POST['ticket'] ."';");
+if (isset($_POST["inventory"]) && isset($_POST["ticket"])) {
+	 $inv = $dbh->prepare("SELECT INVENTORY FROM users WHERE TICKET = :token");
+	 $inv->execute(array('token' => $_POST['ticket']));
+	 $fetch = $inv->fetch(PDO::FETCH_ASSOC);
+	 $str = $fetch['INVENTORY'];
+   //костыльное ограничение вещей в инвентаре 
+     $count = mb_substr_count($str, '<ID>');
+	 if ($count > 240) {
+     exit();
+     } else {
+	 $q = $dbh->prepare("UPDATE users SET INVENTORY  = :inventory WHERE TICKET = :token");
+	 $q->execute(array('inventory' => $_POST['inventory'], 'token' => $_POST['ticket']));
+	 }
+}
