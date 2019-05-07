@@ -1,7 +1,6 @@
 <?php
 
-include("/var/www/html/db_connection.php");
-global $dbh;
+$dbh = new PDO("mysql:host=localhost;dbname=daisy;charset=UTF8", 'root', '');
 
 if (isset($_POST["inventory"]) && isset($_POST["ticket"])) {
 	 $inv = $dbh->prepare("SELECT INVENTORY FROM users WHERE TICKET = :token");
