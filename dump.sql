@@ -21,7 +21,7 @@ SET time_zone = "+00:00";
 -- РЎС‚СЂСѓРєС‚СѓСЂР° С‚Р°Р±Р»РёС†С‹ `USERS`
 --
 
-CREATE TABLE `USERS` (
+CREATE TABLE `users` (
   `ID` int(11) NOT NULL,
   `USERNAME` varchar(255) COLLATE utf8mb4_bin NOT NULL,
   `PASSWORD` varchar(255) COLLATE utf8mb4_bin NOT NULL,
@@ -45,7 +45,7 @@ CREATE TABLE `USERS` (
 --
 -- РРЅРґРµРєСЃС‹ С‚Р°Р±Р»РёС†С‹ `USERS`
 --
-ALTER TABLE `USERS`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`ID`),
   ADD UNIQUE KEY `ID` (`ID`),
   ADD KEY `ID_2` (`ID`);
@@ -57,7 +57,7 @@ ALTER TABLE `USERS`
 --
 -- AUTO_INCREMENT РґР»СЏ С‚Р°Р±Р»РёС†С‹ `USERS`
 --
-ALTER TABLE `USERS`
+ALTER TABLE `users`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10000;
 COMMIT;
 
