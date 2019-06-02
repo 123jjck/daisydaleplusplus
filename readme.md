@@ -14,7 +14,7 @@
 # Требования
 Для создания сервера с Дейзи Дейлом вам нужны
 
-1. [Adobe Flash Media Server](https://adobe.ly/2GY8WUp) (желательно версию 5, для 32-х битных систем можно попробовать использовать [эту](https://u.to/asXsFA) версию), apache **не ставим** и **убираем использовние порта 80**)
+1. [Adobe Flash Media Server](https://share.dmca.gripe/4bzjnhFhWsBzgscD.zip) (для 32-х битных систем Windows можно попробовать использовать [эту](https://u.to/asXsFA) версию), apache **не ставим** и **убираем использовние порта 80**)
 
 2. [Xampp](https://bit.ly/2TgobyD) или другой сервер с PHP
 
