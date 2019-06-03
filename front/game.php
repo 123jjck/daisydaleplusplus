@@ -1,11 +1,12 @@
 <?php
     
-
+$domain = "http://localhost/";
     session_start();
     if (!isset($_SESSION["userId"])) {
         header("Location: /");
     }
 
+$flashvars = "game_server=" . $domain . "&url_path_server=" . $domain . "&portal_url=" . $domain . "&manual_server_selection=&start_step=0&useHashInName=";
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +23,7 @@
             <div class="centered">
                 <embed type="application/x-shockwave-flash" src="base.swf"
                     style="width: 100%"
-                    flashvars="game_server=http%3A%2F%2Flocalhost%2F&url_path_server=http%3A%2F%2Flocalhost%2F&portal_url=http%3A%2F%2Flocalhost%2F&manual_server_selection=&start_step=0&useHashInName=">
+		    flashvars="<?php echo $flashvars; ?>"
             </div>
         </div>
 
