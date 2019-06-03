@@ -6,7 +6,6 @@ $domain = "http://localhost/";
         header("Location: /");
     }
 
-$flashvars = "game_server=" . $domain . "&url_path_server=" . $domain . "&portal_url=" . $domain . "&manual_server_selection=&start_step=0&useHashInName=";
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +22,7 @@ $flashvars = "game_server=" . $domain . "&url_path_server=" . $domain . "&portal
             <div class="centered">
                 <embed type="application/x-shockwave-flash" src="base.swf"
                     style="width: 100%"
-		    flashvars="<?php echo $flashvars; ?>"
+		    flashvars="<?php echo "game_server=" . $domain . "&url_path_server=" . $domain . "&portal_url=" . $domain . "&manual_server_selection=&start_step=0&useHashInName="; ?>"
             </div>
         </div>
 
