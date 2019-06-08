@@ -65,4 +65,3 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
       </div>
 </body>
 </html>
-l
