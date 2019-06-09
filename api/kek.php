@@ -7,7 +7,7 @@ $dbh = new PDO("mysql:host=localhost;dbname=daisy;charset=UTF8", 'root', '');
 				$inv = $a['BGInv'];
 	$invred = str_replace("IsUsed>0|IsLimited>0|", '', $inv);
 	$invred2 = str_replace("|", ';', $invred);
-	$invred3 = preg_replace("/[^0-9,;]/", '', $invred2);
+	$invre14 = preg_replace("/[^0-9,;]/", '', $invred2);
 	$ava = $a['AVATAR'];
 	$avared = preg_replace("/[^0-9]/", ';', $ava);
 	$avacolors = explode(";", $avared);
