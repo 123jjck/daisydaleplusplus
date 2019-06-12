@@ -1,7 +1,7 @@
 <?php
 $dbh = new PDO("mysql:host=localhost;dbname=daisy;charset=UTF8", 'root', '');
 	$ava = $_POST['avatar'];
-	$avared = preg_replace("/[^0-9]/", ';', strval($ava));
+/*	$avared = preg_replace("/[^0-9]/", ';', strval($ava));
 	$avacolors = explode(";", $avared);
 	foreach ($avacolors as $color) {
 		if(strlen($color) >= 6 && $color != 16762375) {
@@ -16,6 +16,7 @@ $bestcolor .= $GLOBALS["goodcolor"];
 $q = $dbh->prepare("UPDATE users SET AVATAR  = :avatar WHERE TICKET = :token");
  $q->execute(array('avatar' => $avaecho, 'token' => $_POST['ticket']));
 } else {
+*/
  $q = $dbh->prepare("UPDATE users SET AVATAR  = :avatar WHERE TICKET = :token");
  $q->execute(array('avatar' => $ava, 'token' => $_POST['ticket']));
-}
+//}
