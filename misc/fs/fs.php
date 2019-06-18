@@ -5,15 +5,12 @@
 	(c) Дейзи
 */
 
-$root = "http://sharaball.ru/fs/";
-$fname = $_GET["filename"];
+define('root','http://sharaball.ru/fs/');
+define('fname', $_GET['filename']);
 
-function sendBack($fname) {
 
-	// вообще наверное лучше просто отправить файл 
-	// и не тратить время на еще один HTTP запрос
-	// readfile($fname);
-	header("Location: /fs/" . $GLOBALS["fname"]);
+function sendBack() {
+	header("Location: /fs/" . fname);
 	
 }
 
@@ -21,16 +18,17 @@ function sendBack($fname) {
 function check_exists() {
 	// проверка на существование файла
 
-	if (file_exists("./" . $GLOBALS["fname"])) {
-		sendBack("./" .$GLOBALS["fname"]);
+	if (file_exists("./" . fname)) {
+		sendBack("./" .fname);
 		exit;
 	}
 }
 
-function check_404($url) {
+function check_404() {
 	// проверка на 404
 
 	$ch = curl_init();
+	curl_setopt($ch, CURLOPT_URL, root . fname);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	$res = curl_exec($ch);
 	$code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -42,12 +40,12 @@ function check_404($url) {
 	}
 }
 
-function download($url) {
+function download() {
 	// скачивание
 
 	$ch = curl_init();
-	$file = fopen("./" . $GLOBALS["fname"], "w");
-	curl_setopt($ch, CURLOPT_URL, $GLOBALS["root"] . $GLOBALS["fname"]);
+	$file = fopen("./" . fname, "w");
+	curl_setopt($ch, CURLOPT_URL, root . fname);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_BUFFERSIZE, 65536);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -59,9 +57,9 @@ function download($url) {
 
 
 
-check_exists($fname);
-check_404($fname);
-download($fname);
-sendBack($fname);
+check_exists();
+check_404();
+download();
+sendBack();
 
 ?>
