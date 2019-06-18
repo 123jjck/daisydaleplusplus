@@ -47,7 +47,7 @@ function download($url) {
 
 	$ch = curl_init();
 	$file = fopen("./" . $GLOBALS["fname"], "w");
-	curl_setopt($ch, CURLOPT_URL, $root . $GLOBALS["fname"]);
+	curl_setopt($ch, CURLOPT_URL, $GLOBALS["root"] . $GLOBALS["fname"]);
 	curl_setopt($ch, CURLOPT_HEADER, 0);
 	curl_setopt($ch, CURLOPT_BUFFERSIZE, 65536);
 	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
