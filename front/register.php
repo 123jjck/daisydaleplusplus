@@ -45,13 +45,13 @@ if (isset($safePost["username"]) && isset($safePost["password"])) {
           $date = date("Y-m-d") . "T" . date("H-m-s") . ".0";
           $ticket = generateTicket();
           $bginv = ';339;349;430;431;';
-          $qwery = $db->query("INSERT INTO `users`(`USERNAME`, `PASSWORD`, `ROLEFLAGS`, `LEVEL`, `AVATAR`, `TICKET`, `INVENTORY`, `REGDATE`, `BGInv`) VALUES ('" . $safePost["username"] . "', '" . $hash . "', 0 ,  1, '" . $ava . "', '" . $ticket . "',  '" . $inv . "', '" . $date . "', '" . $bginv . "');");
+          $qwery = $db->query("INSERT INTO `users`(`USERNAME`, `PASSWORD`, `ROLEFLAGS`, `LEVEL`, `AVATAR`, `TICKET`, `INVENTORY`, `REGDATE`, `BGInv`) VALUES ('" . $safePost["username"] . "', '" . $hash . "', 2 ,  999, '" . $ava . "', '" . $ticket . "',  '" . $inv . "', '" . $date . "', '" . $bginv . "');");
           if (!$qwery) { 
              echo $db->error;
              exit;   
           }
           $_SESSION["ticket"] = $ticket;
-          $_SESSION["roleflags"] = 131086;
+          $_SESSION["roleflags"] = 2;
           $_SESSION["userId"] = $id;
           header("Location: /");
         } else {
