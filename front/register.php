@@ -44,7 +44,8 @@ if (isset($safePost["username"]) && isset($safePost["password"])) {
           $hash = password_hash(md5($safePost["password"]), PASSWORD_DEFAULT);
           $date = date("Y-m-d") . "T" . date("H-m-s") . ".0";
           $ticket = generateTicket();
-          $qwery = $db->query("INSERT INTO `users`(`USERNAME`, `PASSWORD`, `ROLEFLAGS`, `LEVEL`, `AVATAR`, `TICKET`, `INVENTORY`, `REGDATE`) VALUES ('" . $safePost["username"] . "', '" . $hash . "', 131086 ,  999, '" . $ava . "', '" . $ticket . "',  '" . $inv . "', '" . $date . "');");
+          $bginv = ';339;349;430;431;';
+          $qwery = $db->query("INSERT INTO `users`(`USERNAME`, `PASSWORD`, `ROLEFLAGS`, `LEVEL`, `AVATAR`, `TICKET`, `INVENTORY`, `REGDATE`, `BGInv`) VALUES ('" . $safePost["username"] . "', '" . $hash . "', 0 ,  1, '" . $ava . "', '" . $ticket . "',  '" . $inv . "', '" . $date . "', '" . $bginv . "');");
           if (!$qwery) { 
              echo $db->error;
              exit;   
