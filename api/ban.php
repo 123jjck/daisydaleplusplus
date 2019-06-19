@@ -13,7 +13,7 @@ if (isset($_POST["ticket"])) {
 //$id = ($_POST["id"] - 100000);
 	$id = $_POST["id"];
 	$a = $spkidaly->fetch(PDO::FETCH_ASSOC);
-	if ($a['ROLEFLAGS'] == "393230") {
+	if ($a['ROLEFLAGS'] >= 131086) {
 		$q = $dbh->prepare("UPDATE users SET ISBANNED = 1 WHERE ID = :id");
 		$q->execute(array('id' => $id));
 	}
