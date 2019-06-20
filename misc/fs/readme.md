@@ -18,4 +18,3 @@ Options -Indexes
 </IfModule>
 ```
 * Не забудьте [включить модуль cURL в PHP](https://stackoverflow.com/questions/1347146/howto-enable-curl-in-php-xampp)
-3. Ну вроде должно всё работать, я если честно не пробовал)))
