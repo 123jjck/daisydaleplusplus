@@ -65,7 +65,8 @@ $config = '<config><item Id="1" Parameter="AccessRoleFlags" Value="0" Type="numb
 $serversList = '<servers><item Id="1" TRId="1" RId="5" RTMPUrl="rtmp://localhost:1935/daisy" Load="0" QuestLocationLoad="0" FriendsCount="1" ClubsCount="5" Weight="0" /></servers>';
 
 
-$db = new mysqli('localhost', 'root', '', 'daisy');
+include("db_connection.php"); 
+global $db;
 $db->set_charset("utf8");
 
 $q = $db->query("SELECT * FROM users WHERE ID = " . $_SESSION["userId"] . ";");
