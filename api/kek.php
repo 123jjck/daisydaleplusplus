@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: text/plain; charset=utf-8');
-$dbh = new PDO("mysql:host=localhost;dbname=daisy;charset=UTF8", 'root', '');
+include("db_connection.php"); 
+global $dbh;
 	$q = $dbh->prepare("SELECT * FROM users WHERE TICKET = :ticket");
 			$q->execute(array('ticket' => $_GET['ticket']));
 				$a = $q->fetch(PDO::FETCH_ASSOC);
