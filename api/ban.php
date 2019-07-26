@@ -1,7 +1,8 @@
 <?php
 
 
-$dbh = new PDO("mysql:host=localhost;dbname=daisy;charset=UTF8", 'root', '');
+include("db_connection.php"); 
+global $dbh;
 
 
 if (isset($_POST["ticket"])) {
