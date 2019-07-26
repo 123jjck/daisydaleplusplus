@@ -2,7 +2,8 @@
 
 session_start();
 
-$db = new mysqli('localhost', 'root', '', 'daisy');
+include("db_connection.php"); 
+global $db;
 $db->set_charset("utf8");
 $errlvl = "Ошибка! Длинный уровень. Максимальная длина: 5 символов";
 $errlv2 = "Ошибка! Уровень не должен содержать недопустимые символы";
