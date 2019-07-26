@@ -1,5 +1,6 @@
 <?php
-$dbh = new PDO("mysql:host=localhost;dbname=daisy;charset=UTF8", 'root', '');
+include("db_connection.php"); 
+global $dbh;
 	$ava = $_POST['avatar'];
 /*	$avared = preg_replace("/[^0-9]/", ';', strval($ava));
 	$avacolors = explode(";", $avared);
