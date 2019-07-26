@@ -6,7 +6,8 @@
         exit;
     }
     
-$db = new mysqli('localhost', 'root', '', 'daisy');
+include("db_connection.php"); 
+global $db;
 $db->set_charset("utf8");
 
 
