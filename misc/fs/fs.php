@@ -13,7 +13,7 @@ if (file_exists("./" . fname)) {
 	echo(file_get_contents("./" . fname));
 	exit;
 } else {
-	//запрос файла
+	/*запрос файла
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, root . fname);
 	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -28,7 +28,8 @@ if (file_exists("./" . fname)) {
 		//200 ок, возвращаем файл быдлоюзверю
 		echo($res);
 		exit;
-	}
+	}*/
+	header('Location: ' root . fname);
 }
 
 ?>
