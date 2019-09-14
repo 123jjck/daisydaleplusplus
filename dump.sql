@@ -48,7 +48,7 @@ CREATE TABLE `users` (
   `PEAK` int(11) NOT NULL DEFAULT '0',
   `HORNS` int(11) NOT NULL DEFAULT '0',
   `HOUSE_ID` int(11) NOT NULL DEFAULT '708',
-  `HOUSE_STR` longtext NOT NULL
+  `HOUSE_STR` longtext COLLATE utf8mb4_bin
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
