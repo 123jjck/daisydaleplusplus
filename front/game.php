@@ -1,11 +1,9 @@
 <?php
-    
-$domain = "http://" . $_SERVER['HTTP_HOST'] . "/";
     session_start();
     if (!isset($_SESSION["userId"])) {
         header("Location: /");
     }
-
+$domain = "http://" . $_SERVER['HTTP_HOST'] . "/";
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +20,7 @@ $domain = "http://" . $_SERVER['HTTP_HOST'] . "/";
             <div class="centered">
                 <embed type="application/x-shockwave-flash" src="base.swf"
                     style="width: 100%"
-		    flashvars="<?php echo "game_server=" . $domain . "&url_path_server=" . $domain . "&portal_url=" . $domain . "&manual_server_selection=&start_step=0&useHashInName="; ?>"
+		    flashvars="<?php echo "game_server=" . $domain . "&url_path_server=" . $domain . "&portal_url=" . $domain . "&manual_server_selection=&start_step=0&useHashInName="; ?>"/>
             </div>
         </div>
 
