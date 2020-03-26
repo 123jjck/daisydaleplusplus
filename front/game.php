@@ -4,7 +4,7 @@ if (!isset($_SESSION["userId"])) {
 	header("Location: /");
 }
 
-$domain = "http://" . $_SERVER['HTTP_HOST'] . "/";
+$domain = (stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . '/';
 ?>
 
 <!DOCTYPE html>
