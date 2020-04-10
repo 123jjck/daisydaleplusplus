@@ -46,22 +46,22 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-	<title>Вход - DaisyDale</title>
-  <link rel="icon" type="image/png" href="/favicon.png" />
+    	<meta charset="utf-8" />
+	<title>Вход - DD++</title>
+ 	<link rel="icon" type="image/png" href="/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
 	<div class="loginbox">
-	<img class="logo" src="/logo.png">
-	<form action='' method='POST'>
-                <p class="message"><?php if (isset($error)) { echo $error; } ?></p>
-				        <h1>Вход</h1>
-                <input name='username'  placeholder='Логин' /><br/>
-                <input name='password' type='password' placeholder='Пароль'  /><br/>
-                <br/>
-                <button class='meow-btn' type='submit' name='btnLogin'> Войти </button>  <a class='meow-btn' style='background:#ff8787; padding: 16px 15px;' href='/register.php' name='btnReg'> Создать аккаунт </button>  <a/>
-      </form>
-      </div>
+		<img class="logo" src="/logo.png">
+		<form action='' method='POST'>
+                	<p class="message"><?php if (isset($error)) { echo $error; } ?></p>
+			<h1>Вход</h1>
+                	<input name='username'  placeholder='Логин' /><br/>
+                	<input name='password' type='password' placeholder='Пароль'  /><br/>
+                	<br/>
+                	<button class='meow-btn' type='submit' name='btnLogin'> Войти </button>  <a class='meow-btn' style='background:#ff8787; padding: 16px 15px;' href='/register.php' name='btnReg'> Создать аккаунт </button>  <a/>
+		</form>
+	</div>
 </body>
 </html>
