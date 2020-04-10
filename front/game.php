@@ -11,7 +11,7 @@ $domain = (stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'ht
 <html>
 <head>
     <meta charset="utf-8">
-    <title>DaisyDale</title>
+    <title>DD++</title>
     <link type="image/png" href="/favicon.png" rel="icon" />
     <link rel="stylesheet" href="/game.css">
 </head>
@@ -24,7 +24,7 @@ $domain = (stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'ht
         </div>
 
     <p><a href="/cabinet.php">Кабинет</a></p>
-    <p> <a href="/logout.php">Выйти</a></p>
+    <p><a href="/logout.php">Выйти</a></p>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         function resize_embed() {
