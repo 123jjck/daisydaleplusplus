@@ -1,9 +1,6 @@
-@font-face {
-	font-family: "Rotonda";
-	src: url(/RotonBol.ttf);
-}
+@import url(//db.onlinewebfonts.com/c/14b88c7fdb0ca4ae352143a8a1ea2c43?family=RotondaC);
 * {
-	font-family: "Rotonda";
+	font-family: "RotondaC";
 }
 small {
 	font-size: 14pt;
