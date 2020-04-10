@@ -69,7 +69,7 @@ if (isset($safePost["username"]) && isset($safePost["password"])) {
 <html>
 <head>
     <meta charset="utf-8" />
-	<title>Создать аккаунт - DaisyDale</title>
+	<title>Создать аккаунт - DD++</title>
   <link rel="icon" type="image/png" href="/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="/style.css">
 </head>
