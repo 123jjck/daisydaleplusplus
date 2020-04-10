@@ -28,17 +28,17 @@ $regyear = $date[0];
 <html>
 <head>
     <meta charset="utf-8" />
-	<title>Типа кабинет - DaisyDale</title>
+	<title>Личный кабинет - DD++</title>
   <link rel="icon" type="image/png" href="/favicon.png" />
 	<link rel="stylesheet" type="text/css" href="/style.css">
 </head>
 <body>
-    <h1>Типа кабинет</h1>
+    <h1>Кабинет</h1>
     <div class="message"></div>
     
     <form>
-        <p>Лвл: <input name="level" value="<?php echo $level; ?>" /></p>
-        <p>Дата: <input name="regday"  value="<?php echo $regday; ?>"/>.<input name="regmonth"  value="<?php echo $regmonth; ?>"/>.<input name="regyear"  value="<?php echo $regyear; ?>"/></p>
+        <p>Уровень: <input name="level" value="<?php echo $level; ?>" /></p>
+        <p>Дата регистрации: <input name="regday"  value="<?php echo $regday; ?>"/>.<input name="regmonth"  value="<?php echo $regmonth; ?>"/>.<input name="regyear"  value="<?php echo $regyear; ?>"/></p>
         <button type="submit">Отправить</button>
     </form>
     <script
