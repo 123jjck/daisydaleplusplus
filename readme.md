@@ -25,10 +25,10 @@
 # Установка
 
 1. Первым делом необходимо перенести папку `daisy` из репозитория в папку `applications` в корне Adobe Media Server.
-2. Заливаем флешки на вебсервер в папку `fs` или используем [минимальное флеш хранилище](https://github.com/123jjck/ddplusplus/tree/master/misc/fs)
-3. Копируем файлы из всех папок репозитория (кроме папки `daisy` и файла `dump.sql`) и вставляем их в корень вашего сайта (для XAMPP это `htdocs`)
-4. В PhpMyAdmin создайте базу данных под названием `daisy` с кодировкой `utf8_general_ci` и импортируйте туда `dump.sql`
-5. Запустите Adobe Media Server 5 и Adobe Media Administration Server
+2. Заливаем флешки на вебсервер в папку `fs` или используем [минимальное флеш хранилище](https://github.com/123jjck/ddplusplus/tree/master/misc/minfs)
+3. Копируем файлы из всех папок репозитория (кроме папок `daisy`, `misc` и файла `dump.sql`) и вставляем их в корень вашего сайта (для XAMPP это `htdocs`)
+4. В PhpMyAdmin создаём базу данных под названием `daisy` с кодировкой `utf8_general_ci` и импортируем туда `dump.sql`
+5. Запускаем Adobe Media Server и Adobe Media Administration Server
 6. Теперь вы можете зайти на `localhost` и наслаждаться игрой
 
 # Дополнительные шаги установки для запуска сервера на VDS/VPS
