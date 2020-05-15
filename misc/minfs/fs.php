@@ -9,23 +9,41 @@ define('root','http://sharaball.ru/fs/');
 define('fname', $_GET['filename']);
 
 
-function sendBack() {
-	header("Location: /fs/" . fname);
+function sendBack($name) {
+	header("Location: /fs/" . $name);
 	
 }
 
+function detect_encoding($string) { 
+	static $list = array('utf-8', 'windows-1251');
+  
+	foreach ($list as $item) {
+	  $sample = iconv($item, $item, $string);
+	  if (md5($sample) == md5($string))
+		return $item;
+	}
+	return null;
+}
 
-function check_exists() {
-	// проверка на существование файла
+function check_exists() { // проверка на существование файла
+	
 
+	$name = urldecode(fname); // на всякий случай 
+
+	if(detect_encoding($name) == 'windows-1251') {
+		$name = iconv('Windows-1251', 'UTF-8', $name);
+		sendBack("./" .$name);
+		exit;
+	}
+	
 	if (file_exists("./" . fname)) {
 		sendBack("./" .fname);
 		exit;
 	}
 }
 
-function check_404() {
-	// проверка на 404
+function check_404() { // проверка на 404
+	
 
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, root . fname);
@@ -40,8 +58,8 @@ function check_404() {
 	}
 }
 
-function download() {
-	// скачивание
+function download() { // скачивание
+	
 
 	$ch = curl_init();
 	$file = fopen("./" . fname, "w");
