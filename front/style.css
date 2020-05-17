@@ -24,7 +24,8 @@ a.meow-btn {
 	background: #b4deee;
 }
 .logo {
-	width: 225px;
+	width: 300px;
+	padding-top: 5rem;
 }
 input {
 	font-size: 21pt;
