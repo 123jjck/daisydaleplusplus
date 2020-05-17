@@ -78,6 +78,6 @@ function download() { // скачивание
 check_exists();
 check_404();
 download();
-sendBack();
+sendBack(fname);
 
 ?>
