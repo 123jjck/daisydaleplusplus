@@ -60,7 +60,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 	<input name='username'  placeholder='Логин' /><br/>
                 	<input name='password' type='password' placeholder='Пароль'  /><br/>
                 	<br/>
-                	<button class='meow-btn' type='submit' name='btnLogin'> Войти </button>  <a class='meow-btn' style='background:#ff8787; padding: 16px 15px;' href='/register.php' name='btnReg'> Создать аккаунт </button>  <a/>
+                	<button class='meow-btn' type='submit' style="display: inline-block;" name='btnLogin'> Войти </button>  <a class='meow-btn' style='background:#ff8787; display: inline-block;' href='/register.php' name='btnReg'> Создать аккаунт </button>  <a/>
 		</form>
 	</div>
 </body>
