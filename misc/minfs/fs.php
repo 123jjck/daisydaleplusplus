@@ -10,8 +10,8 @@ define('fname', $_GET['filename']);
 
 
 function sendBack($name) {
-	header("Location: /fs/" . $name);
-	
+	exit(file_get_contents("./" . $name));
+	//header("Location: /fs/" . $name);
 }
 
 function detect_encoding($string) { 
@@ -60,7 +60,6 @@ function check_404() { // проверка на 404
 
 function download() { // скачивание
 	
-
 	$ch = curl_init();
 	$file = fopen("./" . fname, "w");
 	curl_setopt($ch, CURLOPT_URL, root . fname);
