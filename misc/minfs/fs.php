@@ -10,6 +10,12 @@ define('fname', $_GET['filename']);
 
 
 function sendBack($name) {
+	header("Content-Description: File Transfer"); 
+	if(pathinfo('./' . $name)['extension'] == 'swf') header("Content-Type: application/x-shockwave-flash");
+	if(pathinfo('./' . $name)['extension'] == 'png') header("Content-Type: image/png");
+	if(pathinfo('./' . $name)['extension'] == 'jpg') header("Content-Type: image/jpeg");
+	$size = filesize('./' . $name);
+	header('Content-Length: ' . $size);
 	exit(file_get_contents("./" . $name));
 	//header("Location: /fs/" . $name);
 }
