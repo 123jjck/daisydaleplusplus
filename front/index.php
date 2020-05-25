@@ -19,19 +19,25 @@ function generateTicket() {
 }
 
 include("db_connection.php"); 
-global $db;
-$db->set_charset("utf8");
+global $dbh;
+
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
-  $a = $db->query("SELECT ID, PASSWORD, ROLEFLAGS FROM users WHERE USERNAME = '" . $_POST['username'] . "';");
-  if ($a->num_rows == 0) {
+  $a = $dbh->prepare("SELECT ID, PASSWORD, ROLEFLAGS FROM users WHERE USERNAME = :uname");
+  $a->bindParam('uname', $_POST['username']);
+  $a->execute();
+  $fetched  = $a->fetch(PDO::FETCH_ASSOC);
+  if (!$fetched) {
     $error = "Нет такого смешарика";
-  } else {
-    $fetched = $a->fetch_assoc();
-    
+  } else {    
     if (password_verify(md5($_POST["password"]), $fetched['PASSWORD'])) {
       $token = generateTicket();
-      $db->query("UPDATE users SET TICKET = '" . $token . "' WHERE USERNAME = '" . $_POST["username"] . "';");
+	    
+      $updTik = $dbh->prepare("UPDATE users SET TICKET = :token WHERE USERNAME = :uname;");
+      $updTik->bindParam('token', $token);
+      $updTik->bindParam('uname', $_POST['username']);
+      $updTik->execute();
+	    
       $_SESSION["userId"] = $fetched["ID"];
       $_SESSION["ticket"] = $token;
       $_SESSION["roleflags"] = $fetched["ROLEFLAGS"];
