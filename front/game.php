@@ -19,15 +19,15 @@ $domain = (stripos($_SERVER['SERVER_PROTOCOL'],'https') === 0 ? 'https://' : 'ht
 <body>
     <div class="container">
         <div class="centered">
-            <embed type="application/x-shockwave-flash" src="base.swf" style="width: 100%" flashvars="<?php echo "game_server=" . $domain . "&url_path_server=" . $domain . "&portal_url=" . $domain . "&manual_server_selection=&start_step=0&useHashInName="; ?>" />
-        </div>
+            <object id="base" name="base" menu="true" allowfullscreen="true" allowscriptaccess="always"  type="application/x-shockwave-flash" data="base.swf?v=1337" style="width: 100%"><param name="flashvars" value="<?php echo "game_server=" . $domain . "&url_path_server=" . $domain . "&portal_url=" . $domain . "&manual_server_selection=&start_step=0&useHashInName="; ?>"></object>
+	</div>
     </div>
     <p><a href="/cabinet.php">Кабинет</a></p>
     <p><a href="/logout.php">Выйти</a></p>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script type="text/javascript">
         function resize_embed() {
-            $("embed").height(($(window).height() / $(window).width()) * $("embed").width());
+            $("#base").height(($(window).height() / $(window).width()) * $("#base").width());
         }
         $(document).ready(resize_embed);
         $(window).resize(resize_embed);
