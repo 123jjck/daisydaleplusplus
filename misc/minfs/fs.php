@@ -38,12 +38,12 @@ function check_exists() { // проверка на существование ф
 
 	if(detect_encoding($name) == 'windows-1251') {
 		$name = iconv('Windows-1251', 'UTF-8', $name);
-		sendBack("./" .$name);
+		sendBack($name);
 		exit;
 	}
 	
 	if (file_exists("./" . fname)) {
-		sendBack("./" .fname);
+		sendBack(fname);
 		exit;
 	}
 }
