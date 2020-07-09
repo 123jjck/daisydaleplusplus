@@ -1,5 +1,9 @@
 <?php
 include("db_connection.php"); 
-global $db;
-$db->query("UPDATE users SET GOLD=gold-".$_POST['priceRu'].",MONEY=money-".$_POST['priceSm']." WHERE TICKET='".$_POST['ticket']."'");
+global $dbh;
+$query = $dbh->prepare('UPDATE users SET GOLD = GOLD - :priceRu, MONEY = MONEY - :priceSm WHERE TICKET = :ticket');
+$query->bindParam('priceRu', $_POST['priceRu']);
+$query->bindParam('priceSm', $_POST['priceSm']);
+$query->bindParam('ticket', $_POST['ticket']);
+$query->execute();
 ?>
