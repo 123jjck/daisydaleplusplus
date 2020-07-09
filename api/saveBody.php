@@ -1,5 +1,17 @@
 <?php
 include("db_connection.php"); 
-global $db;
-$db->query("UPDATE users SET BODY_COLOR=".$_POST['body_color'].",EARS_COLOR=".$_POST['ears_color'].",EARS=".$_POST['ears'].",EYES=".$_POST['eyes'].",HORNS=".$_POST['horns'].",LEGS=".$_POST['legs'].",LEGS_COLOR=".$_POST['legs_color'].",MOUTH=".$_POST['mouth'].",NOSE=".$_POST['nose'].",PEAK=".$_POST['peak']." WHERE TICKET='".$_POST['token']."'");
+global $dbh;
+$query = $dbh->prepare('UPDATE users SET BODY_COLOR = :bodycolor, EARS_COLOR = :earscolor, EARS = :ears, EYES = :eyes, HORNS = :horns, LEGS = :legs, LEGS_COLOR = :legscolor, MOUTH = :mouth, NOSE = :nose, PEAK = :peak WHERE TICKET = :ticket');
+$query->bindParam('bodycolor', $_POST['body_color']);
+$query->bindParam('earscolor', $_POST['ears_color']);
+$query->bindParam('ears', $_POST['ears']);
+$query->bindParam('eyes', $_POST['eyes']);
+$query->bindParam('horns', $_POST['horns']);
+$query->bindParam('legs', $_POST['legs']);
+$query->bindParam('legscolor', $_POST['legs_color']);
+$query->bindParam('mouth', $_POST['mouth']);
+$query->bindParam('nose', $_POST['nose']);
+$query->bindParam('peak', $_POST['peak']);
+$query->bindParam('ticket', $_POST['token']);
+$query->execute();
 ?>
