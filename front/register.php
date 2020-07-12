@@ -52,7 +52,7 @@ if (isset($safePost["username"]) && isset($safePost["password"])) {
           }
           $_SESSION["ticket"] = $ticket;
           $_SESSION["roleflags"] = 2;
-          $_SESSION["userId"] = $id;
+          $_SESSION["userId"] = $db->insert_id;
           header("Location: /");
         } else {
           $error = "Смешарик с таким ником уже существует.";
