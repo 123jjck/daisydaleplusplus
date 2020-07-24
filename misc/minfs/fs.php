@@ -16,6 +16,8 @@ function sendBack($name) {
 	if(pathinfo('./' . $name)['extension'] == 'jpg') header("Content-Type: image/jpeg");
 	$size = filesize('./' . $name);
 	header('Content-Length: ' . $size);
+	header("Cache-control: public");
+	header("Expires: " . gmdate("D, d M Y H:i:s", time() + 60*60*4) . " GMT");
 	exit(file_get_contents("./" . $name));
 	//header("Location: /fs/" . $name);
 }
