@@ -7,9 +7,9 @@
 ```
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteRule ^fs/(.*)!(.*).swf$ /fs/proxyfs.php?filename=$1.swf
-RewriteRule ^fs/(.*)!(.*).png$ /fs/proxyfs.php?filename=$1.png
-RewriteRule ^fs/(.*)!.swf$ /fs/proxyfs.php?filename=$1.swf
+RewriteRule ^fs/(.*)!(.*).swf$ /fs/fs.php?filename=$1.swf
+RewriteRule ^fs/(.*)!(.*).png$ /fs/fs.php?filename=$1.png
+RewriteRule ^fs/(.*)!.swf$ /fs/fs.php?filename=$1.swf
 RewriteRule ^async/ServerAction ServerAction.php
 RewriteRule ^async/Ping ping.php
 RewriteRule ^logout logout.php
