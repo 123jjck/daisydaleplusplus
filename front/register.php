@@ -28,12 +28,12 @@ if (isset($safePost["username"]) && isset($safePost["password"])) {
    if (preg_match("/[^a-z,A-Z,0-9,а-я,А-Я,\_]/u", $safePost["username"])) { 
     $error = "Ваш логин содержит недопустимые символы.";
   } else {
-    if (strlen($safePost["username"]) < 3 ) {
+    if (mb_strlen($safePost["username"]) < 3 ) {
         $error = "Короткий логин";
-    }  else if (strlen($safePost["username"]) > 40) {
+    }  else if (mb_strlen($safePost["username"]) > 40) {
         $error = "Длинный логин";
       } else {
-      if (strlen($safePost["password"]) < 6) {
+      if (mb_strlen($safePost["password"]) < 6) {
         $error = "Короткий пароль";
       } else {
         $c = $db->query("SELECT * FROM users WHERE USERNAME = '" . $safePost["username"] . "';");
