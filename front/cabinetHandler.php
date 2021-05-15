@@ -10,7 +10,7 @@ if (!isset($_SESSION["userId"]) || !isset($_POST["level"]))
 {
     exit;
 }
-if (strlen($_POST["level"]) > 5)
+if (mb_strlen($_POST["level"]) > 5)
 {
     echo $errlvl;
 }
