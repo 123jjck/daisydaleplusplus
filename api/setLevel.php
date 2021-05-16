@@ -1,7 +1,11 @@
 <?php
 include("db_connection.php"); 
-global $dbh;
- if (strlen($_POST["level"]) <= 5) {
-	$q = $dbh->prepare("UPDATE users SET LEVEL = :level WHERE TICKET = :ticket");
-			$q->execute(array('level' => $_POST["level"], 'ticket' => $_POST['ticket']));
- }
+
+if(!(isset($_POST['level']) && isset($_POST['id']))) exit('error');
+if(mb_strlen($_POST["level"]) > 5) exit('error');
+if(preg_match("/[^a-z,A-Z,0-9,а-я,А-Я,\_]/u", $_POST["level"])) exit('error');
+
+$q = $dbh->prepare("UPDATE users SET LEVEL = :level WHERE ID = :id");
+$q->execute(array('level' => $_POST["level"], 'id' => $_POST['id']));
+
+echo $_POST['level'];
