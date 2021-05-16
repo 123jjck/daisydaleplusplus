@@ -4,7 +4,7 @@ if (!isset($_SESSION["userId"])) {
     header("Location: /");
 }
 
-include("db_connection.php"); 
+require("db_connection.php"); 
 global $db;
 $db->set_charset("utf8");
 
