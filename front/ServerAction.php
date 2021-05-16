@@ -108,7 +108,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
     <phone>
         <messages/>
     </phone>
-    <user_name Value="test" />
+    <user_name Value="'. $a['USERNAME'] . '" />
     <postcard>
         <messages/>
     </postcard>
