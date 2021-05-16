@@ -1,8 +1,5 @@
 <?php
-
 session_start();
-
-
 if (isset($_SESSION["userId"])) {
     header("Location: /game.php");    
 }
@@ -19,8 +16,6 @@ function generateTicket() {
 }
 
 require("db_connection.php"); 
-global $dbh;
-
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
   $a = $dbh->prepare("SELECT ID, PASSWORD, ROLEFLAGS FROM users WHERE USERNAME = :uname");
@@ -48,7 +43,6 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
   } 
 }
 ?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -66,7 +60,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
                 	<input name='username'  placeholder='Логин' /><br/>
                 	<input name='password' type='password' placeholder='Пароль'  /><br/>
                 	<br/>
-                	<button class='meow-btn' type='submit' style="display: inline-block;" name='btnLogin'> Войти </button>  <a class='meow-btn' style='background:#ff8787; display: inline-block;' href='/register.php' name='btnReg'> Создать аккаунт </a>
+                	<button class='meow-btn' type='submit' style="display: inline-block;" name='btnLogin'>Войти</button>&nbsp;<a class='meow-btn' style='background:#ff8787; display: inline-block;' href='/register.php' name='btnReg'>Создать аккаунт</a>
 		</form>
 	</div>
 </body>
