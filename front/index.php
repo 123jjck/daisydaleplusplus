@@ -38,7 +38,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
       $_SESSION["roleflags"] = $fetched["ROLEFLAGS"];
       header("Location: /");
     } else {
-      $error = "Неправильный пароль.";
+      $error = "Неправильный пароль";
     }
   } 
 }
