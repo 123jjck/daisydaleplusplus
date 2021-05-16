@@ -66,7 +66,7 @@ $domain = (in_array($_SERVER['REMOTE_ADDR'], ['127.0.0.1', '::1'])) ? 'localhost
 $serversList = '<servers><item Id="1" TRId="1" RId="5" RTMPUrl="rtmp://' . $domain . ':1935/daisy" Load="0" QuestLocationLoad="0" FriendsCount="1" ClubsCount="5" Weight="0" /></servers>';
 
 
-include("db_connection.php"); 
+require("db_connection.php"); 
 global $db;
 $db->set_charset("utf8");
 
