@@ -5,20 +5,18 @@ if (!isset($_SESSION["userId"])) {
 }
 
 require("db_connection.php"); 
-global $db;
-$db->set_charset("utf8");
 
-$q = $db->query("SELECT * FROM users WHERE ID = " . $_SESSION["userId"] . ";");
-$a = $q->fetch_assoc();
+$query = $dbh->prepare("SELECT * FROM users WHERE ID = :id");
+$query->bindParam('id', $_SESSION['userId']);
+$query->execute();
+$fetched = $query->fetch(PDO::FETCH_ASSOC);
 
-$level = $a['LEVEL'];
-
-$dat = explode("T", $a['REGDATE'])[0];
+$level = $fetched['LEVEL'];
+$dat = explode("T", $fetched['REGDATE'])[0];
 $date = explode("-", $dat);
 $regday = $date[2];
 $regmonth = $date[1];
 $regyear = $date[0];
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -34,8 +32,8 @@ $regyear = $date[0];
     <h1>Кабинет</h1>
     <div class="message"></div>
     <form>
-        <p>Уровень: <input name="level" value="<?php echo $level; ?>" /></p>
-        <p>Дата регистрации: <input name="regday" value="<?php echo $regday; ?>" />.<input name="regmonth" value="<?php echo $regmonth; ?>" />.<input name="regyear" value="<?php echo $regyear; ?>" /></p>
+        <p>Уровень: <input name="level" minlength="1" maxlength="5" value="<?php echo $level; ?>" /></p>
+        <p>Дата регистрации: <input name="regday" required maxlength="2" value="<?php echo $regday; ?>" />.<input name="regmonth" required maxlength="2"  value="<?php echo $regmonth; ?>" />.<input name="regyear" required minlength="4" maxlength="4" value="<?php echo $regyear; ?>" /></p>
         <button type="submit">Отправить</button>
     </form>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
