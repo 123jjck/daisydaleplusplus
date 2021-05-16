@@ -1,24 +1,24 @@
 <?php
 session_start();
 require("db_connection.php");
-global $db;
-$db->set_charset("utf8");
-$errlvl = "Ошибка! Длинный уровень. Максимальная длина: 5 символов";
-$errlv2 = "Ошибка! Уровень не должен содержать недопустимые символы";
+
+$errlvllen = "Ошибка! Длинный уровень. Максимальная длина: 5 символов";
+$errlvlreg = "Ошибка! Уровень не должен содержать недопустимые символы";
 $errdate = "Ошибка! Неправильная дата";
-if (!isset($_SESSION["userId"]) || !isset($_POST["level"]))
+
+if (!(isset($_SESSION["userId"]) && isset($_POST["level"]) && isset($_POST['regmonth']) && isset($_POST['regday']) && isset($_POST['regyear'])))
 {
     exit;
 }
 if (mb_strlen($_POST["level"]) > 5)
 {
-    echo $errlvl;
+    echo $errlvllen;
 }
 else
 {
     if (preg_match("/[^a-z,A-Z,0-9,а-я,А-Я,\_]/u", $_POST["level"]))
     {
-        echo $errlv2;
+        echo $errlvlreg;
     }
     else
     {
@@ -28,16 +28,20 @@ else
         }
         else
         {
-            $q = $db->query("SELECT * FROM users WHERE ID = " . $_SESSION["userId"] . ";");
-            $a = $q->fetch_assoc();
-            $prevLevel = $a['LEVEL'];
+            $getRegDate = $dbh->prepare("SELECT REGDATE FROM users WHERE ID = :id");
+            $getRegDate->bindParam('id', $_SESSION['userId']);
+            $getRegDate->execute();
+            $previousRegdate = $getRegDate->fetch(PDO::FETCH_ASSOC)['REGDATE'];
+
             $level = $_POST["level"];
-            $regdate = $_POST["regyear"] . "-" . $_POST["regmonth"] . "-" . $_POST["regday"] . "T" . explode("T", $a['REGDATE']) [1];
-            $level = strval($level);
-            $db->query("UPDATE users SET LEVEL = '" . $level . "' WHERE ID = " . $_SESSION["userId"] . ";");
-            $db->query("UPDATE users SET REGDATE = '" . $regdate . "' WHERE ID = " . $_SESSION["userId"] . ";");
-            $res = "ОК, данные обновлены!";
-            echo $res;
+            $regdate = $_POST["regyear"] . "-" . $_POST["regmonth"] . "-" . $_POST["regday"] . "T" . explode("T", $previousRegdate)[1];
+
+            $query = $dbh->prepare("UPDATE users SET LEVEL = :lvl, REGDATE = :regdate WHERE ID = :id");
+            $query->bindParam('lvl', $level);
+            $query->bindParam('regdate', $regdate);
+            $query->bindParam('id', $_SESSION['userId']);
+            $query->execute();
+            echo "ОК, данные обновлены!";
         }
     }
 }
