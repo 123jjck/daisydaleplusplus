@@ -8,4 +8,5 @@ if(preg_match("/[^a-z,A-Z,0-9,а-я,А-Я,\_]/u", $_POST["level"])) exit('error'
 $q = $dbh->prepare("UPDATE users SET LEVEL = :level WHERE ID = :id");
 $q->execute(array('level' => $_POST["level"], 'id' => $_POST['id']));
 
-echo $_POST['level'];
+exit($_POST['level']);
+?>
