@@ -1,6 +1,5 @@
 <?php
-include("db_connection.php"); 
-global $dbh;
+require_once("db_connection.php"); 
 $query = $dbh->prepare('UPDATE users SET BODY_COLOR = :bodycolor, EARS_COLOR = :earscolor, EARS = :ears, EYES = :eyes, HORNS = :horns, LEGS = :legs, LEGS_COLOR = :legscolor, MOUTH = :mouth, NOSE = :nose, PEAK = :peak WHERE TICKET = :ticket');
 $query->bindParam('bodycolor', $_POST['body_color']);
 $query->bindParam('earscolor', $_POST['ears_color']);
