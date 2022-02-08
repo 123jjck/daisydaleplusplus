@@ -1,7 +1,9 @@
 <?php
 $fname = $_GET["filename"];
+if(strpos(fname, ".php")) {
+	exit();
+}
 if (file_exists("./" . $fname)) {
-	//возврат файла, если он существует локально 
 	exit(file_get_contents("./" . $fname));
 } else {
     $root = "http://sharaball.ru/fs/";

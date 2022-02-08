@@ -8,6 +8,9 @@
 define('root','http://sharaball.ru/fs/');
 define('fname', $_GET['filename']);
 
+if(strpos(fname, ".php")) {
+	exit();
+}
 
 function sendBack($name) {
 	header("Content-Description: File Transfer"); 
