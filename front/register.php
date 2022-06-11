@@ -33,7 +33,7 @@ function checkRegister($username, $password, $dbh) {
   return $error;
 }
 
-if(isset($_POST['username']) && isset($_POST['password'])) {
+if(isset($_POST['username'], $_POST['password'])) {
   $error = checkRegister($_POST['username'], $_POST['password'], $dbh);
   if(empty($error)) {
     $ava = "IsBodyPart>true|BodyPartTypeId>5|MediaResourceID>67|LayerID>25|BodyPartId>30|Id>30|Color>NaN;IsBodyPart>true|BodyPartTypeId>6|MediaResourceID>68|LayerID>39|BodyPartId>31|Id>31|Color>16762375;IsBodyPart>true|BodyPartTypeId>7|MediaResourceID>74|LayerID>29|BodyPartId>40|Id>40|Color>NaN;IsBodyPart>true|BodyPartTypeId>8|MediaResourceID>98|LayerID>49|BodyPartId>73|Id>73|Color>NaN;IsBodyPart>true|BodyPartTypeId>2|MediaResourceID>55|LayerID>9|BodyPartId>1|Id>1|Color>NaN;IsBodyPart>true|BodyPartTypeId>3|MediaResourceID>56|LayerID>19|BodyPartId>2|Id>2|Color>16762375;IsBodyPart>false|GoodID>8712|MediaResourceID>27527|GoodTypeID>4|LayerID>45|Id>8712;IsBodyPart>false|GoodID>9235|MediaResourceID>29235|GoodTypeID>94|LayerID>57|Id>9235";
@@ -57,7 +57,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
     
     $_SESSION["ticket"] = $ticket;
     $_SESSION["roleflags"] = 2;
-    $_SESSION["userId"] = $dbh->lastInsertId();
+    $_SESSION["userId"] = (int)$dbh->lastInsertId();
     header("Location: /");
   }
 } 
@@ -74,7 +74,7 @@ if(isset($_POST['username']) && isset($_POST['password'])) {
       <div class="loginbox">
          <img class="logo" src="/logo.png">
          <form action="" method="POST">
-            <p class="message"><?php if (isset($error)) { echo $error; } ?></p>
+            <p class="message"><?php if (isset($error)) echo $error; ?></p>
             <h1>Регистрация</h1>
             <input name="username" minlength="3" maxlength="16" placeholder="Логин" /><br/>
             <input name="password" type="password" minlength="3" maxlength="32" placeholder="Пароль" /><br/>
