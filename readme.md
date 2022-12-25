@@ -14,7 +14,7 @@
 # Требования
 Для создания сервера с Дейзи Дейлом вам нужны
 
-1. Adobe Media Server (для: [Windows x64](http://download.macromedia.com/pub/adobemediaserver/5_0_15/AdobeMediaServer5_x64.exe), [Ubuntu x64](http://download.macromedia.com/pub/adobemediaserver/5_0_15/AdobeMediaServer5_x64.tar.gz)) (для 32-х битных систем Windows можно попробовать использовать [эту](https://u.to/asXsFA) версию), apache **не** ставим и **убираем** использовние порта 80)
+1. Adobe Media Server (для: [Windows x64](https://download.macromedia.com/pub/adobemediaserver/5_0_15/AdobeMediaServer5_x64.exe), [Ubuntu x64](https://download.macromedia.com/pub/adobemediaserver/5_0_15/AdobeMediaServer5_x64.tar.gz)) (для 32-х битных систем Windows можно попробовать использовать [эту](https://u.to/asXsFA) версию), apache **не** ставим и **убираем** использовние порта 80)
 
 2. [XAMPP](https://bit.ly/2TgobyD) или другой вебсервер с PHP
 
