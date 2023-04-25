@@ -4,12 +4,12 @@
 	(c) Дейзи, Jjck
 */
 if(!isset($_GET['filename'])) die;
-define('root','http://sharaball.ru/fs/');
+define('root','https://www.smeshariki.ru/fs/');
 define('fname', $_GET['filename']);
 
 function validate_name($filename) {
 	if (strlen($filename) > 255) return false; // no mb_* since we check bytes
-	$invalidCharacters = '|\'\\?*&<";:>+[]=/';
+	$invalidCharacters = '|\'\\?*&<";:>+[]=/!';
 	if (strpbrk($filename, $invalidCharacters) !== false) return false;
 	$path_info = pathinfo('./' . $filename);
 	if($path_info['extension'] !== 'swf' && $path_info['extension'] !== 'png' && $path_info['extension'] !== 'jpg') return false;
